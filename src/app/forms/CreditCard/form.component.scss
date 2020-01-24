@@ -1,0 +1,252 @@
+/* prefixed by https://autoprefixer.github.io (PostCSS: v7.0.26, autoprefixer: v9.7.3) */
+
+* {
+  font-family: "Roboto", sans-serif;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+.card {
+  height: 270px;
+  width: 400px;
+  border-radius: 9px;
+  margin: 20px 0;
+  bottom: 0;
+  color: #fff;
+  min-height: 0;
+  min-width: 0;
+  background: #1f8fff;
+  -webkit-box-shadow: -10px 10px 60px 10px #ADB7C4;
+  box-shadow: -10px 10px 60px 10px #ADB7C4;
+  grid-area: card;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[7];
+  grid-template-columns: repeat(7, 1fr);
+  -ms-grid-rows: (1fr)[3];
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-areas: "name name  name . . logo logo "  "number number number number number . ." " date date date date . ccv ccv ";
+  &__input-wrap{
+    position: relative;
+  }
+  &__date,
+  &__input {
+    font-size: 15px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: lighter;
+    text-align: center;
+    padding: 4px 20px 4px 25px;
+  }
+
+  &__input {
+    padding: 4px 12px;
+    letter-spacing: 1px;
+    background-color: #3799ff;
+    width: 100%;
+    border: none;
+    color: #fff;
+
+    &::-webkit-input-placeholder {
+      color: #fff;
+    }
+
+    &::-moz-placeholder {
+      color: #fff;
+    }
+
+    &:-ms-input-placeholder {
+      color: #fff;
+    }
+
+    &::-ms-input-placeholder {
+      color: #fff;
+    }
+
+    &::placeholder {
+      color: #fff;
+    }
+
+    &--custom {
+
+    }
+
+    &--big {
+      font-size: 19px;
+    }
+  }
+
+  &__name {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 3;
+    padding-top: 25px;
+    margin-left: 35px;
+    grid-area: name;
+    margin-top: 0;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+  }
+ &__paymentAmount{
+   -ms-grid-row: 1;
+   -ms-grid-column: 1;
+   -ms-grid-column-span: 3;
+   padding-top: 25px;
+   grid-area: paymentAmount;
+   margin-top: 0;
+   height: -webkit-fit-content;
+   height: -moz-fit-content;
+   height: fit-content;
+   margin-left: 20px;
+ }
+
+  &__logo,
+  &__number,
+  &__date,
+  &__ccv {
+    margin-left: 35px;
+    margin-top: -25px;
+  }
+
+  &__number,
+  &__date,
+  &__ccv {
+    position: relative;
+    -ms-flex-item-align: center;
+    -ms-grid-row-align: center;
+    align-self: center;
+
+    &:after {
+      position: absolute;
+      top: -25px;
+      font-family: "Roboto", sans-serif;
+      left: 0;
+      color: rgba(142, 190, 255, 0.9);
+      font-size: 13px;
+    }
+  }
+
+  &__logo {
+    -ms-grid-row: 1;
+    -ms-grid-column: 6;
+    -ms-grid-column-span: 2;
+    display: -ms-grid;
+    display: grid;
+    grid-area: logo;
+    overflow: hidden;
+    margin: 0;
+    -ms-grid-column-align: center;
+    justify-self: center;
+    -ms-grid-row-align: center;
+    align-self: center;
+
+    svg {
+      height: 50px;
+      width: 100px;
+    }
+  }
+
+  &__number {
+    -ms-grid-row: 2;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 5;
+    grid-area: number;
+
+    &:after {
+      content: 'Credit  Card  Number';
+    }
+  }
+
+  &__date {
+    -ms-grid-row: 3;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 4;
+    grid-area: date;
+    //background-color: #3799ff;
+    justify-self: left;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding-left: 0;
+    &:after {
+      content: 'Expiration';
+    }
+  }
+
+  &__ccv {
+    -ms-grid-row: 3;
+    -ms-grid-column: 6;
+    -ms-grid-column-span: 2;
+    grid-area: ccv;
+    -ms-grid-column-align: left;
+    justify-self: left;
+    margin-left: 0;
+
+    &:after {
+      content: 'CCV';
+    }
+  }
+
+  &__error {
+    position: absolute;
+    bottom: -18px;
+    font-size: 12px;
+    color: #540808;
+    width: 100%;
+    left: 0;
+  }
+
+}
+.amount_error{
+  font-size: 12px;
+  color: #540808;
+}
+.btn {
+  display: block;
+  -ms-grid-column-align: center;
+  justify-self: center;
+  -ms-flex-item-align: center;
+  -ms-grid-row-align: center;
+  align-self: center;
+  font-family: "Open Sans", sans-serif;
+  background-color: #ffffff;
+  color: #0b82f8;
+  border: 1px solid #0b82f8;
+  text-transform: uppercase;
+  font-size: .97rem;
+  opacity: .8;
+  font-weight: lighter;
+  padding: 7px 40px;
+  border-radius: 1.6rem;
+  cursor: pointer;
+  outline: none;
+  -webkit-transition: all .2s linear;
+  -o-transition: all .2s linear;
+  transition: all .2s linear;
+  &[disabled]{
+    background-color: #ccc !important;
+    color: #0b82f8 !important;
+    cursor: no-drop;
+  }
+}
+
+.btn:hover,
+.btn:active {
+  -webkit-transition: all .2s linear;
+  -o-transition: all .2s linear;
+  transition: all .2s linear;
+  background: #0b82f8;
+  color: #FFF;
+}

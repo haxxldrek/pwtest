@@ -1,0 +1,43 @@
+.paymentMethods{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  .customDropdown{
+    margin-left: 30px;
+    position: relative;
+    z-index: 1;
+    cursor: pointer;
+    &.open {
+      .dropdown{
+        display: block;
+      }
+    }
+    .current{
+      background-position: left center;
+      background-repeat: no-repeat;
+      background-size: 30px;
+      padding-left: 35px;
+    }
+    .dropdown{
+      position: absolute;
+      z-index: 2;
+      display: none;
+      padding-left: 0;
+      margin: 0;
+      background: rgba(255,255,255, 0.9);
+      padding: 10px;
+      border-radius: 5px;
+      li{
+        background-size: 30px;
+        padding: 5px 0 5px 35px;
+        background-position: left center;
+        list-style-type: none;
+        background-repeat: no-repeat;
+      }
+    }
+  }
+  .amount{
+    max-width: 50px;
+  }
+
+}

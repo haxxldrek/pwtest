@@ -1,0 +1,18 @@
+<div class="paymentMethods">
+  <select name="country" (change)="onCountryChange($event.target.value)">
+    <option *ngFor="let country of countries;" [value]="country.code">{{country.name}}</option>
+  </select>
+
+  <div class="customDropdown"  *ngIf="selectedpaymentMethod != null" appDropdown>
+    <span class="current" [ngStyle]="{'background-image': 'url('+selectedpaymentMethod.img_url+')'}">{{selectedpaymentMethod.name}} <span style="font-size: 10px">&#9660;</span></span>
+    <ul class="dropdown">
+      <li *ngFor="let method of availableMethods; let i = index;"
+          (click)="changePaymentMethod(i);"
+          [ngStyle]="{'background-image': 'url('+method.img_url+')'}">{{method.name}}</li>
+    </ul>
+  </div>
+
+  <input class="amount" type="number" min="0" (input)="onPaymentAmount($event.target.value)" placeholder="$0" />
+
+</div>
+{{errorGetMethod}}

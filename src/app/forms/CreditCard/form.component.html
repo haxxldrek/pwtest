@@ -1,0 +1,42 @@
+<form *ngIf="!formSent; else dataSent" [formGroup]="paymentForm" (ngSubmit)="onSubmit()">
+    <div class="card">
+        <div class="card__name card__input-wrap">
+            <input class="card__input card__input--custom" placeholder="First/Last Name" type="text" id="cardholderName" formControlName="cardholderName">
+            <span class="card__error" *ngIf="!paymentForm.get('cardholderName').valid && paymentForm.get('cardholderName').touched">
+                <span *ngIf="paymentForm.get('cardholderName').errors['invalidName'] && !paymentForm.get('cardholderName').errors['required']">Name is invalid.</span>
+                <span *ngIf="paymentForm.get('cardholderName').errors['lengthInvalid']">To short name.</span>
+                <span *ngIf="paymentForm.get('cardholderName').errors['required']">This field is required!</span>
+            </span>
+        </div>
+
+        <!--<div class="card__paymentAmount card__input-wrap">-->
+            <!--<input class="card__input" placeholder="$5" type="number" id="paymentAmount" formControlName="paymentAmount" />-->
+            <!--<span class="card__error" *ngIf="!paymentForm.get('paymentAmount').valid && paymentForm.get('paymentAmount').touched">At Least $1</span>-->
+        <!--</div>-->
+        <div class="card__logo">
+            {{ccType}}
+        </div>
+        <div class="card__number card__input-wrap">
+            <input class="card__input card__input--big" placeholder="0000 0000 0000 0000" type="number" id="cardNumber" formControlName="cardNumber">
+            <span class="card__error" *ngIf="!paymentForm.get('cardNumber').valid && paymentForm.get('cardNumber').touched">Please enter a valid CC number!</span>
+        </div>
+        <div class="card__date" formGroupName="expDate">
+            <div class="expiration-month card__input-wrap">
+                <input class="card__input" placeholder="MM" type="tel" id="expMonth" formControlName="expMonth" />
+                <span class="card__error" *ngIf="!paymentForm.get('expDate.expMonth').valid && paymentForm.get('expDate.expMonth').touched">Invalid Month!</span>
+            </div>
+            /
+            <div class="expiration-month card__input-wrap">
+                <input class="card__input" placeholder="YY" type="tel" id="expYear" formControlName="expYear" />
+                <span class="card__error" *ngIf="!paymentForm.get('expDate.expYear').valid && paymentForm.get('expDate.expYear').touched">Invalid Year!</span>
+            </div>
+        </div>
+        <div class="card__ccv card__input-wrap">
+            <input class="card__input" placeholder="CVV" type="tell" id="cvv" formControlName="cvv" />
+            <span class="card__error" *ngIf="!paymentForm.get('cvv').valid && paymentForm.get('cvv').touched">Invalid CVV!</span>
+        </div>
+    </div>
+    <span class="amount_error" *ngIf="!amount && paymentForm.valid">Payment amount should be greater then 0!</span>
+    <button class="btn" type="submit" [disabled]=" !amount || !paymentForm.valid">Submit ${{amount}}</button>
+</form>
+<ng-template #dataSent>Your data was sent</ng-template>
